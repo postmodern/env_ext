@@ -45,6 +45,12 @@ describe Variables do
     encoding.should == 'UTF8'
   end
 
+  it "should return an empty Array if LANG is not set" do
+    subject.stub!(:env_hash).and_return({})
+
+    subject.lang.should be_empty
+  end
+
   it "should parse the COLUMNS variable" do
     subject.columns.should == 80
   end

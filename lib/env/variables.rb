@@ -51,7 +51,11 @@ module Env
     #   The language name and encoding.
     #
     def lang
-      env_hash['LANG'].split('.',2)
+      if (lang = env_hash['LANG'])
+        lang.split('.',2)
+      else
+        []
+      end
     end
 
     #
