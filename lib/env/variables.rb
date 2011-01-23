@@ -83,5 +83,15 @@ module Env
     def terminal
       ENV['COLORTERM'] || ENV['TERM']
     end
+
+    #
+    # The default editor to use.
+    #
+    # @return [String, nil]
+    #   The name of the editor program.
+    #
+    def editor
+      ENV['EDITOR']
+    end
   end
 end
