@@ -13,6 +13,12 @@ describe Env do
     subject[var_name].should == var_value
   end
 
+  it "should allow directly setting env variables" do
+    subject['FOO'] = 'bar'
+
+    subject['FOO'].should == 'bar'
+  end
+
   it "should provide transparent CONSTANT access to env variables" do
     subject.const_get(var_name).should == var_value
   end
