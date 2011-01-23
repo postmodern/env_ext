@@ -61,6 +61,14 @@ Parse complex variables:
     Env.editor
     # => "vim"
 
+Only access the common variables from your Class:
+
+    class Project
+
+      include Env::Variables
+
+    end
+
 ## Install
 
     $ gem install env
