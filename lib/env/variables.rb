@@ -1,9 +1,11 @@
+require 'pathname'
+
 module Env
   module Variables
     #
     # The directories to search within for executables.
     #
-    # @return [Array<String>]
+    # @return [Array<Pathname>]
     #   The paths of the directories.
     #
     def paths
@@ -13,7 +15,7 @@ module Env
     #
     # The directories to search within for libraries.
     #
-    # @return [Array<String>]
+    # @return [Array<Pathname>]
     #   The paths of the directories.
     #
     def ld_library_paths
@@ -105,12 +107,14 @@ module Env
     #
     # Parses a String containing multiple paths.
     #
-    # @return [Array<String>]
+    # @return [Array<Pathname>]
     #   The multiple paths.
     #
     def parse_paths(paths)
       if paths
-        paths.split(File::PATH_SEPARATOR)
+        paths.split(File::PATH_SEPARATOR).map do |path|
+          Pathname.new(path)
+        end
       else
         []
       end
