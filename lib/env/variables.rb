@@ -35,7 +35,7 @@ module Env
     #
     # The home directory.
     #
-    # @return [Pathname, nil]
+    # @return [Pathname]
     #   The path of the home directory.
     #
     def home
