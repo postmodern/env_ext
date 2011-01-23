@@ -7,11 +7,17 @@ module Env
     #   The paths of the directories.
     #
     def paths
-      if ENV['PATH']
-        ENV['PATH'].split(File::PATH_SEPARATOR)
-      else
-        []
-      end
+      parse_paths(ENV['PATH'])
+    end
+
+    #
+    # The directories to search within for libraries.
+    #
+    # @return [Array<String>]
+    #   The paths of the directories.
+    #
+    def ld_library_paths
+      parse_paths(ENV['LD_LIBRARY_PATH'])
     end
 
     #
@@ -92,6 +98,22 @@ module Env
     #
     def editor
       ENV['EDITOR']
+    end
+
+    protected
+
+    #
+    # Parses a String containing multiple paths.
+    #
+    # @return [Array<String>]
+    #   The multiple paths.
+    #
+    def parse_paths(paths)
+      if paths
+        paths.split(File::PATH_SEPARATOR)
+      else
+        []
+      end
     end
   end
 end
