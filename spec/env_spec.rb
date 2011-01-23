@@ -9,7 +9,7 @@ describe Env do
     subject.const_get('VERSION').should_not be_empty
   end
 
-  it "should provide transparent Hash access to env variables" do
+  it "should provide direct Hash access to env variables" do
     subject[var_name].should == var_value
   end
 
@@ -21,5 +21,11 @@ describe Env do
     method_name = var_name.downcase
 
     subject.send(method_name).should == var_value
+  end
+
+  it "should allow setting of environment variables via methods" do
+    subject.shell = '/bin/zsh'
+
+    subject['SHELL'].should == '/bin/zsh'
   end
 end
