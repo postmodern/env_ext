@@ -8,35 +8,37 @@
 ## Description
 
 {Env} provides a Ruby interface to common environment variables, used on
-both Linux, BSD, OSX and Windows.
+Linux, BSD, OSX and Windows.
 
 ## Features
 
 * Provides access to:
-  * `PATH`
-  * `LANG`
-  * `COLOMNS`
-  * `EDITOR`
   * `HOME` (or `HOMEPATH` on Windows)
-  * `LINES`
+  * `PATH`
+  * `LD_LIBRARY_PATH`
   * `SHELL`
   * `TERM` and `COLORTERM`
+  * `COLOMNS`
+  * `LINES`
+  * `EDITOR`
+  * `BROWSER`
+  * `LANG`
 
 ## Examples
 
     require 'env'
 
-Transparently access environment variables like a Hash:
+Transparently access environment variables as a Hash:
 
     Env['DESKTOP_SESSION']
     # => "gnome"
 
-Transparently access environment variables like Constants:
+Transparently access environment variables as Constants:
 
     Env::DESKTOP_SESSION
     # => "gnome"
 
-Transparently access environment variables like methods:
+Transparently access environment variables with methods:
 
     Env.desktop_session
     # => "gnome"
@@ -44,10 +46,10 @@ Transparently access environment variables like methods:
 Parse complex variables:
 
     Env.home
-    # => "/home/hal"
+    # => #<Pathname:/home/alice>
 
     Env.paths
-    # => ["/home/hal/.rvm/gems/ruby-1.9.2-p136/bin", "/home/hal/.rvm/gems/ruby-1.9.2-p136@global/bin", "/home/hal/.rvm/rubies/ruby-1.9.2-p136/bin", "/home/hal/.rvm/bin", "/usr/local/bin", "/usr/bin", "/bin", "/usr/local/sbin", "/usr/sbin", "/sbin", "/home/hal/bin", "/vault/0/src/rubinius/bin"]
+    # => [#<Pathname:/usr/local/bin>, #<Pathname:/usr/bin>, #<Pathname:/bin>, #<Pathname:/usr/local/sbin>, #<Pathname:/usr/sbin>, #<Pathname:/sbin>]
 
     Env.lang
     # => ["en_US", "utf8"]
