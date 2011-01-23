@@ -36,6 +36,8 @@ module Env
     ENV[name.to_s] = value.to_s
   end
 
+  protected
+
   #
   # Provides transparent access to the environment variables.
   #
