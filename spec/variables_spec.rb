@@ -32,10 +32,27 @@ describe Variables do
     subject.home.should == Pathname.new(home)
   end
 
-  it "should check HOMEPATH if HOME is not set" do
-    subject.stub!(:env_hash).and_return('HOMEPATH' => home)
+  it "should use the USERPROFILE variable if HOME is not set" do
+    subject.stub!(:env_hash).and_return('USERPROFILE' => home)
 
     subject.home.should == Pathname.new(home)
+  end
+
+  it "should use HOMEDRIVE and HOMEPATH if HOME is not set" do
+    drive = 'C:'
+
+    subject.stub!(:env_hash).and_return(
+      'HOMEDRIVE' => drive,
+      'HOMEPATH' => home
+    )
+
+    subject.home.should == Pathname.new(drive + home)
+  end
+
+  it "should attempt to expand '~' if none of the HOME variables are set" do
+    subject.stub!(:env_hash).and_return({})
+
+    subject.home.should be_directory
   end
 
   it "should parse the LANG variable" do

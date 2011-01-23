@@ -39,9 +39,24 @@ module Env
     #   The path of the home directory.
     #
     def home
-      if (home = (env_hash['HOME'] || env_hash['HOMEPATH']))
-        Pathname.new(home)
-      end
+      # logic adapted from Gem.find_home.
+      path = if (env_hash['HOME'] || env_hash['USERPROFILE'])
+               env_hash['HOME'] || env_hash['USERPROFILE']
+             elsif (env_hash['HOMEDRIVE'] && env_hash['HOMEPATH'])
+               "#{env_hash['HOMEDRIVE']}#{env_hash['HOMEPATH']}"
+             else
+               begin
+                 File.expand_path('~')
+               rescue
+                 if File::ALT_SEPARATOR
+                   'C:/'
+                 else
+                   '/'
+                 end
+               end
+             end
+
+      return Pathname.new(path)
     end
 
     #
