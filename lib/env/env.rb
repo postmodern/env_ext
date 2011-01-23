@@ -17,7 +17,7 @@ module Env
   #   # => "/bin/bash"
   #
   def Env.[](name)
-    ENV[name.to_s]
+    env_hash[name.to_s]
   end
 
   #
@@ -33,7 +33,7 @@ module Env
   #   The String value of the environment variable.
   #
   def Env.[]=(name,value)
-    ENV[name.to_s] = value.to_s
+    env_hash[name.to_s] = value.to_s
   end
 
   protected
