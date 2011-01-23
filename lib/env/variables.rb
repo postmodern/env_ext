@@ -25,11 +25,13 @@ module Env
     #
     # The home directory.
     #
-    # @return [String]
+    # @return [Pathname, nil]
     #   The path of the home directory.
     #
     def home
-      ENV['HOME'] || ENV['HOMEPATH']
+      if (home = (ENV['HOME'] || ENV['HOMEPATH']))
+        Pathname.new(home)
+      end
     end
 
     #
