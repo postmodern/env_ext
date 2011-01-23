@@ -104,6 +104,16 @@ module Env
       ENV['EDITOR']
     end
 
+    #
+    # The default browser to use.
+    #
+    # @return [String, nil]
+    #   The name of the browser program.
+    #
+    def browser
+      ENV['BROWSER']
+    end
+
     protected
 
     #
