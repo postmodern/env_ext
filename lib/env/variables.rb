@@ -3,13 +3,23 @@ require 'pathname'
 module Env
   module Variables
     #
+    # The environment variables.
+    #
+    # @return [Hash{String => String}]
+    #   The Hash of environment variable names and values.
+    #
+    def env_hash
+      ENV
+    end
+
+    #
     # The directories to search within for executables.
     #
     # @return [Array<Pathname>]
     #   The paths of the directories.
     #
     def paths
-      parse_paths(ENV['PATH'])
+      parse_paths(env_hash['PATH'])
     end
 
     #
@@ -19,7 +29,7 @@ module Env
     #   The paths of the directories.
     #
     def ld_library_paths
-      parse_paths(ENV['LD_LIBRARY_PATH'])
+      parse_paths(env_hash['LD_LIBRARY_PATH'])
     end
 
     #
@@ -29,7 +39,7 @@ module Env
     #   The path of the home directory.
     #
     def home
-      if (home = (ENV['HOME'] || ENV['HOMEPATH']))
+      if (home = (env_hash['HOME'] || env_hash['HOMEPATH']))
         Pathname.new(home)
       end
     end
@@ -41,7 +51,7 @@ module Env
     #   The language name and encoding.
     #
     def lang
-      ENV['LANG'].split('.',2)
+      env_hash['LANG'].split('.',2)
     end
 
     #
@@ -51,7 +61,7 @@ module Env
     #   The number of columns.
     #
     def columns
-      ENV['COLUMNS'].to_i if ENV['COLUMNS']
+      env_hash['COLUMNS'].to_i if env_hash['COLUMNS']
     end
 
     #
@@ -61,7 +71,7 @@ module Env
     #   The number of lines.
     #
     def lines
-      ENV['LINES'].to_i if ENV['LINES']
+      env_hash['LINES'].to_i if env_hash['LINES']
     end
 
     #
@@ -71,7 +81,7 @@ module Env
     #   The path to the default shell.
     #
     def shell
-      ENV['SHELL']
+      env_hash['SHELL']
     end
 
     #
@@ -91,7 +101,7 @@ module Env
     #   The name of the terminal program.
     #
     def terminal
-      ENV['COLORTERM'] || ENV['TERM']
+      env_hash['COLORTERM'] || env_hash['TERM']
     end
 
     #
@@ -101,7 +111,7 @@ module Env
     #   The name of the editor program.
     #
     def editor
-      ENV['EDITOR']
+      env_hash['EDITOR']
     end
 
     #
@@ -111,7 +121,7 @@ module Env
     #   The name of the browser program.
     #
     def browser
-      ENV['BROWSER']
+      env_hash['BROWSER']
     end
 
     protected
