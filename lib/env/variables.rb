@@ -74,6 +74,18 @@ module Env
     end
 
     #
+    # The default timezone.
+    #
+    # @return [String, nil]
+    #   The timezone name.
+    #
+    # @since 0.2.0
+    #
+    def timezone
+      env['TZ']
+    end
+
+    #
     # The number of columns in the terminal.
     #
     # @return [Integer]
