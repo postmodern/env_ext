@@ -164,7 +164,7 @@ module Env
     # @since 0.2.0
     #
     def debug?
-      !env_hash['DEBUG'].nil?
+      true if env_hash['DEBUG']
     end
 
     protected
