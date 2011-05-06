@@ -16,7 +16,8 @@ describe Variables do
       'LANG' => 'en_US.UTF8',
       'COLUMNS' => '80',
       'LINES' => '10',
-      'SHELL' => '/bin/bash'
+      'SHELL' => '/bin/bash',
+      'DEBUG' => '1'
     )
   end
 
@@ -95,5 +96,9 @@ describe Variables do
     )
 
     subject.terminal.should == 'gnome-terminal'
+  end
+
+  it "should check if DEBUG was set" do
+    subject.should be_debug
   end
 end

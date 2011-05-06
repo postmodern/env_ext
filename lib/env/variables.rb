@@ -155,6 +155,18 @@ module Env
       env_hash['BROWSER']
     end
 
+    #
+    # Determines whether optional Debugging was enabled.
+    #
+    # @return [Boolean]
+    #   Specifies whether the `DEBUG` variable was specified.
+    #
+    # @since 0.2.0
+    #
+    def debug?
+      !env_hash['DEBUG'].nil?
+    end
+
     protected
 
     #
