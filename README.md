@@ -2,7 +2,7 @@
 
 * [Homepage](http://github.com/postmodern/env)
 * [Issues](http://github.com/postmodern/env/issues)
-* [Documentation](http://rubydoc.info/gems/env)
+* [Documentation](http://rubydoc.info/gems/env/frames)
 * [Email](mailto:postmodern.mod3 at gmail.com)
 
 ## Description
