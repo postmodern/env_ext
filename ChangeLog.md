@@ -1,3 +1,9 @@
+### 0.2.0 / 2011-05-05
+
+* Added {Env::Variables#timezone}.
+* Added {Env::Variables#debug?}.
+* Opt into [test.rubygems.org](http://test.rubygems.org/).
+
 ### 0.1.2 / 2011-01-23
 
 * Fixed {Env::Variables#home} to match the behavior of `Gem.find_home`.
