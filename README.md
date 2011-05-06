@@ -23,6 +23,8 @@ Linux, BSD, OSX and Windows.
   * `EDITOR`
   * `BROWSER`
   * `LANG`
+  * `TZ`
+  * `DEBUG`
 
 ## Examples
 
