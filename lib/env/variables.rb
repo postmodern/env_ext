@@ -8,6 +8,8 @@ module Env
     # @return [Hash{String => String}]
     #   The Hash of environment variable names and values.
     #
+    # @api semipublic
+    #
     def env_hash
       ENV
     end
