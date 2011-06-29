@@ -33,6 +33,20 @@ module Env
     end
 
     #
+    # The name of the current user.
+    #
+    # @return [String]
+    #   The name of the user.
+    #
+    # @since 0.3.0
+    #
+    def user
+      # USER is used on GNU/Linux and Windows
+      # LOGNAME is the POSIX user-name ENV variable
+      ENV['USER'] || ENV['LOGNAME']
+    end
+
+    #
     # The home directory.
     #
     # @return [Pathname]
