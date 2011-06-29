@@ -43,7 +43,7 @@ module Env
     def user
       # USER is used on GNU/Linux and Windows
       # LOGNAME is the POSIX user-name ENV variable
-      ENV['USER'] || ENV['LOGNAME']
+      env_hash['USER'] || env_hash['LOGNAME']
     end
 
     #
