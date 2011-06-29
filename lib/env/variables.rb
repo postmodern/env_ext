@@ -10,7 +10,7 @@ module Env
     #
     # @api semipublic
     #
-    def env_hash
+    def env
       ENV
     end
 
@@ -21,7 +21,7 @@ module Env
     #   The paths of the directories.
     #
     def paths
-      parse_paths(env_hash['PATH'])
+      parse_paths(env['PATH'])
     end
 
     #
@@ -31,7 +31,7 @@ module Env
     #   The paths of the directories.
     #
     def ld_library_paths
-      parse_paths(env_hash['LD_LIBRARY_PATH'])
+      parse_paths(env['LD_LIBRARY_PATH'])
     end
 
     #
@@ -45,7 +45,7 @@ module Env
     def user
       # USER is used on GNU/Linux and Windows
       # LOGNAME is the POSIX user-name ENV variable
-      env_hash['USER'] || env_hash['LOGNAME']
+      env['USER'] || env['LOGNAME']
     end
 
     #
@@ -56,10 +56,10 @@ module Env
     #
     def home
       # logic adapted from Gem.find_home.
-      path = if (env_hash['HOME'] || env_hash['USERPROFILE'])
-               env_hash['HOME'] || env_hash['USERPROFILE']
-             elsif (env_hash['HOMEDRIVE'] && env_hash['HOMEPATH'])
-               "#{env_hash['HOMEDRIVE']}#{env_hash['HOMEPATH']}"
+      path = if (env['HOME'] || env['USERPROFILE'])
+               env['HOME'] || env['USERPROFILE']
+             elsif (env['HOMEDRIVE'] && env['HOMEPATH'])
+               "#{env['HOMEDRIVE']}#{env['HOMEPATH']}"
              else
                begin
                  File.expand_path('~')
@@ -82,7 +82,7 @@ module Env
     #   The language name and encoding.
     #
     def lang
-      if (lang = env_hash['LANG'])
+      if (lang = env['LANG'])
         lang.split('.',2)
       else
         []
@@ -108,7 +108,7 @@ module Env
     #   The number of columns.
     #
     def columns
-      env_hash['COLUMNS'].to_i if env_hash['COLUMNS']
+      env['COLUMNS'].to_i if env['COLUMNS']
     end
 
     #
@@ -118,7 +118,7 @@ module Env
     #   The number of lines.
     #
     def lines
-      env_hash['LINES'].to_i if env_hash['LINES']
+      env['LINES'].to_i if env['LINES']
     end
 
     #
@@ -128,7 +128,7 @@ module Env
     #   The path to the default shell.
     #
     def shell
-      env_hash['SHELL']
+      env['SHELL']
     end
 
     #
@@ -148,7 +148,7 @@ module Env
     #   The name of the terminal program.
     #
     def terminal
-      env_hash['COLORTERM'] || env_hash['TERM']
+      env['COLORTERM'] || env['TERM']
     end
 
     #
@@ -158,7 +158,7 @@ module Env
     #   The name of the editor program.
     #
     def editor
-      env_hash['EDITOR']
+      env['EDITOR']
     end
 
     #
@@ -168,7 +168,7 @@ module Env
     #   The name of the browser program.
     #
     def browser
-      env_hash['BROWSER']
+      env['BROWSER']
     end
 
     #
@@ -180,7 +180,7 @@ module Env
     # @since 0.2.0
     #
     def debug?
-      true if env_hash['DEBUG']
+      true if env['DEBUG']
     end
 
     protected
