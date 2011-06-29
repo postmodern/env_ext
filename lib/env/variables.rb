@@ -35,6 +35,18 @@ module Env
     end
 
     #
+    # The host-name of the system.
+    #
+    # @return [String]
+    #   The host-name.
+    #
+    # @since 0.3.0
+    #
+    def host_name
+      env['HOSTNAME']
+    end
+
+    #
     # The name of the current user.
     #
     # @return [String]
