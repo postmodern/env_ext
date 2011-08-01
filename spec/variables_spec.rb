@@ -9,7 +9,7 @@ describe Variables do
   let(:shell) { '/bin/bash' }
 
   before(:each) do
-    subject.stub!(:env_hash).and_return(
+    subject.stub!(:env).and_return(
       'PATH' => '/usr/local/bin:/usr/bin:/bin',
       'HOME' => home,
       'TERM' => term,
@@ -34,7 +34,7 @@ describe Variables do
   end
 
   it "should use the USERPROFILE variable if HOME is not set" do
-    subject.stub!(:env_hash).and_return('USERPROFILE' => home)
+    subject.stub!(:env).and_return('USERPROFILE' => home)
 
     subject.home.should == Pathname.new(home)
   end
@@ -42,7 +42,7 @@ describe Variables do
   it "should use HOMEDRIVE and HOMEPATH if HOME is not set" do
     drive = 'C:'
 
-    subject.stub!(:env_hash).and_return(
+    subject.stub!(:env).and_return(
       'HOMEDRIVE' => drive,
       'HOMEPATH' => home
     )
@@ -51,7 +51,7 @@ describe Variables do
   end
 
   it "should attempt to expand '~' if none of the HOME variables are set" do
-    subject.stub!(:env_hash).and_return({})
+    subject.stub!(:env).and_return({})
 
     subject.home.should be_directory
   end
@@ -64,7 +64,7 @@ describe Variables do
   end
 
   it "should return an empty Array if LANG is not set" do
-    subject.stub!(:env_hash).and_return({})
+    subject.stub!(:env).and_return({})
 
     subject.lang.should be_empty
   end
@@ -90,7 +90,7 @@ describe Variables do
   end
 
   it "should check COLORTERM before the TERM variable" do
-    subject.stub!(:env_hash).and_return(
+    subject.stub!(:env).and_return(
       'COLORTERM' => 'gnome-terminal',
       'TERM' => term
     )
