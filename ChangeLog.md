@@ -1,3 +1,13 @@
+### 0.3.0 / 2012-05-27
+
+* Added {Env::Variables#user}.
+* Added {Env::Variables#host_name}.
+* Fixed typos {Env.[]} and {Env.[]=} where the old `env_hash` method
+  was being called.
+* Fixed specs that were stubbing the old `env_hash` method.
+* Replaced ore-tasks with
+  [rubygems-tasks](https://github.com/postmodern/rubygems-tasks#readme).
+
 ### 0.2.0 / 2011-05-05
 
 * Added {Env::Variables#timezone}.
