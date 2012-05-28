@@ -7,7 +7,7 @@ description:
 license: MIT
 authors: Postmodern
 email: postmodern.mod3@gmail.com
-homepage: https://github.com/postmodern/env
+homepage: https://github.com/postmodern/env#readme
 has_yard: true
 
 development_dependencies:
