@@ -1,7 +1,7 @@
 # Env
 
-* [Homepage](http://github.com/postmodern/env)
-* [Issues](http://github.com/postmodern/env/issues)
+* [Homepage](https://github.com/postmodern/env)
+* [Issues](https://github.com/postmodern/env/issues)
 * [Documentation](http://rubydoc.info/gems/env/frames)
 * [Email](mailto:postmodern.mod3 at gmail.com)
 
@@ -79,6 +79,6 @@ Only access the common variables from your Class:
 
 ## Copyright
 
-Copyright (c) 2011 Hal Brodigan
+Copyright (c) 2011-2012 Hal Brodigan
 
 See {file:LICENSE.txt} for details.
