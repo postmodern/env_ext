@@ -28,8 +28,6 @@ module EnvExt
     # @return [String]
     #   The host-name.
     #
-    # @since 0.3.0
-    #
     def host_name
       self['HOSTNAME']
     end
@@ -39,8 +37,6 @@ module EnvExt
     #
     # @return [String]
     #   The name of the user.
-    #
-    # @since 0.3.0
     #
     def user
       # USER is used on GNU/Linux and Windows
@@ -94,8 +90,6 @@ module EnvExt
     #
     # @return [String, nil]
     #   The timezone name.
-    #
-    # @since 0.2.0
     #
     def timezone
       self['TZ']
@@ -178,8 +172,6 @@ module EnvExt
     #
     # @return [Boolean]
     #   Specifies whether the `DEBUG` variable was specified.
-    #
-    # @since 0.2.0
     #
     def debug?
       true if self['DEBUG']
