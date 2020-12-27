@@ -3,18 +3,6 @@ require 'pathname'
 module Env
   module Methods
     #
-    # The environment variables.
-    #
-    # @return [Hash{String => String}]
-    #   The Hash of environment variable names and values.
-    #
-    # @api semipublic
-    #
-    def env
-      ENV
-    end
-
-    #
     # The directories to search within for executables.
     #
     # @return [Array<Pathname>]
