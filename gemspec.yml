@@ -8,6 +8,13 @@ license: MIT
 authors: Postmodern
 email: postmodern.mod3@gmail.com
 homepage: https://github.com/postmodern/env_ext#readme
+
+metadata:
+  documentation_uri: https://rubydoc.info/gems/env_ext
+  source_code_uri: https://github.com/postmodern/env_ext
+  bug_tracker_uri: https://github.com/postmodern/env_ext/issues
+  changelog_uri: https://github.com/postmodern/env_ext/blob/master/ChangeLog.md
+
 has_yard: true
 
 development_dependencies:
