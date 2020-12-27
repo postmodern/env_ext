@@ -16,7 +16,7 @@ used on Linux, BSD, OSX and Windows.
 * {EnvExt::Methods#ld_library_paths ENV.ld_library_paths} - `LD_LIBRARY_PATH`
 * {EnvExt::Methods#host_name ENV.host_name} -`HOMENAME`
 * {EnvExt::Methods#user ENV.user} -`USER` or `LOGNAME`
-* {EnvExt::Methods#home ENV.home}` - `HOME`, `USERPROFILE`, or `HOMEPATH` and `HOMEDRIVE` on Windows.
+* {EnvExt::Methods#home ENV.home} - `HOME`, `USERPROFILE`, or `HOMEPATH` and `HOMEDRIVE` on Windows.
 * {EnvExt::Methods#lang ENV.lang} - `LANG`
 * {EnvExt::Methods#timezone ENV.timezone} - `TZ`
 * {EnvExt::Methods#shell ENV.shell} - `SHELL`
