@@ -1,8 +1,8 @@
 require 'spec_helper'
 require 'env/variables'
 
-describe Variables do
-  subject { Object.new.extend(Variables) }
+describe Env::Methods do
+  subject { Object.new.extend(Methods) }
 
   let(:home) { '/home/alice' }
   let(:term) { 'xterm' }

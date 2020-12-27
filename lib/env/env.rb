@@ -1,8 +1,6 @@
-require 'env/variables'
+require 'env/methods'
 
 module Env
-  extend Variables
-
   #
   # Provides direct access to the environment variables.
   #
@@ -16,8 +14,8 @@ module Env
   #   Env['SHELL']
   #   # => "/bin/bash"
   #
-  def Env.[](name)
-    env[name.to_s]
+  def self.[](name)
+    ENV[name.to_s]
   end
 
   #
@@ -32,9 +30,11 @@ module Env
   # @return [String]
   #   The String value of the environment variable.
   #
-  def Env.[]=(name,value)
-    env[name.to_s] = value.to_s
+  def self.[]=(name,value)
+    ENV[name.to_s] = value.to_s
   end
+
+  extend Methods
 
   protected
 
@@ -51,8 +51,8 @@ module Env
   #   Env::SHELL
   #   # => "/bin/bash"
   #
-  def Env.const_missing(name)
-    Env[name.to_s]
+  def self.const_missing(name)
+    self[name.to_s]
   end
 
   #
@@ -72,7 +72,7 @@ module Env
   #   Env.shell = '/bin/zsh'
   #   # => "/bin/zsh"
   #
-  def Env.method_missing(name,*arguments,&block)
+  def self.method_missing(name,*arguments,&block)
     name = name.to_s
 
     if (arguments.length == 1 && name[-1..-1] == '=')

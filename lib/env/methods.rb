@@ -1,7 +1,7 @@
 require 'pathname'
 
 module Env
-  module Variables
+  module Methods
     #
     # The environment variables.
     #
@@ -21,7 +21,7 @@ module Env
     #   The paths of the directories.
     #
     def paths
-      parse_paths(env['PATH'])
+      parse_paths(self['PATH'])
     end
 
     #
@@ -31,7 +31,7 @@ module Env
     #   The paths of the directories.
     #
     def ld_library_paths
-      parse_paths(env['LD_LIBRARY_PATH'])
+      parse_paths(self['LD_LIBRARY_PATH'])
     end
 
     #
@@ -43,7 +43,7 @@ module Env
     # @since 0.3.0
     #
     def host_name
-      env['HOSTNAME']
+      self['HOSTNAME']
     end
 
     #
@@ -57,7 +57,7 @@ module Env
     def user
       # USER is used on GNU/Linux and Windows
       # LOGNAME is the POSIX user-name ENV variable
-      env['USER'] || env['LOGNAME']
+      self['USER'] || self['LOGNAME']
     end
 
     #
@@ -68,10 +68,10 @@ module Env
     #
     def home
       # logic adapted from Gem.find_home.
-      path = if (env['HOME'] || env['USERPROFILE'])
-               env['HOME'] || env['USERPROFILE']
-             elsif (env['HOMEDRIVE'] && env['HOMEPATH'])
-               "#{env['HOMEDRIVE']}#{env['HOMEPATH']}"
+      path = if (self['HOME'] || self['USERPROFILE'])
+               self['HOME'] || self['USERPROFILE']
+             elsif (self['HOMEDRIVE'] && self['HOMEPATH'])
+               "#{self['HOMEDRIVE']}#{self['HOMEPATH']}"
              else
                begin
                  File.expand_path('~')
@@ -94,7 +94,7 @@ module Env
     #   The language name and encoding.
     #
     def lang
-      if (lang = env['LANG'])
+      if (lang = self['LANG'])
         lang.split('.',2)
       else
         []
@@ -110,7 +110,7 @@ module Env
     # @since 0.2.0
     #
     def timezone
-      env['TZ']
+      self['TZ']
     end
 
     #
@@ -120,7 +120,7 @@ module Env
     #   The number of columns.
     #
     def columns
-      env['COLUMNS'].to_i if env['COLUMNS']
+      self['COLUMNS'].to_i if self['COLUMNS']
     end
 
     #
@@ -130,7 +130,7 @@ module Env
     #   The number of lines.
     #
     def lines
-      env['LINES'].to_i if env['LINES']
+      self['LINES'].to_i if self['LINES']
     end
 
     #
@@ -140,7 +140,7 @@ module Env
     #   The path to the default shell.
     #
     def shell
-      env['SHELL']
+      self['SHELL']
     end
 
     #
@@ -160,7 +160,7 @@ module Env
     #   The name of the terminal program.
     #
     def terminal
-      env['COLORTERM'] || env['TERM']
+      self['COLORTERM'] || self['TERM']
     end
 
     #
@@ -170,7 +170,7 @@ module Env
     #   The name of the editor program.
     #
     def editor
-      env['EDITOR']
+      self['EDITOR']
     end
 
     #
@@ -180,7 +180,7 @@ module Env
     #   The name of the browser program.
     #
     def browser
-      env['BROWSER']
+      self['BROWSER']
     end
 
     #
@@ -192,7 +192,7 @@ module Env
     # @since 0.2.0
     #
     def debug?
-      true if env['DEBUG']
+      true if self['DEBUG']
     end
 
     protected
