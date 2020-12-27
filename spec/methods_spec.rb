@@ -1,5 +1,5 @@
 require 'spec_helper'
-require 'env/variables'
+require 'env/methods'
 
 describe Env::Methods do
   subject { Object.new.extend(Methods) }
