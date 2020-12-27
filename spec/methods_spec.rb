@@ -116,9 +116,9 @@ describe EnvExt::Methods do
     end
   end
 
-  describe "#terminal" do
-    it "should determine the current Terminal" do
-      expect(subject.terminal).to eq(term)
+  describe "#term" do
+    it "should determine the current TERM" do
+      expect(subject.term).to eq(term)
     end
 
     context "when COLORTERM and TERM are set" do
@@ -130,8 +130,14 @@ describe EnvExt::Methods do
       end
 
       it "should check COLORTERM before the TERM variable" do
-        expect(subject.terminal).to eq('gnome-terminal')
+        expect(subject.term).to eq('gnome-terminal')
       end
+    end
+  end
+
+  describe "#terminal" do
+    it "should be an alias to #term" do
+      expect(subject.terminal).to be == subject.term
     end
   end
 
