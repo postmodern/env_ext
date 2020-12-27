@@ -147,9 +147,11 @@ module EnvExt
     # @return [String, nil]
     #   The name of the terminal program.
     #
-    def terminal
+    def term
       self['COLORTERM'] || self['TERM']
     end
+
+    alias terminal term
 
     #
     # The default editor to use.
