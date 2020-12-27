@@ -17,8 +17,8 @@ Gem::Specification.new do |gemspec|
   }
 
   version = {
-    :file     => 'env/version',
-    :constant => 'Env::VERSION'
+    :file     => 'env_ext/version',
+    :constant => 'EnvExt::VERSION'
   }
 
   defaults = {

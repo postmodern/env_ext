@@ -1,6 +1,6 @@
 require 'pathname'
 
-module Env
+module EnvExt
   module Methods
     #
     # The directories to search within for executables.

@@ -1,13 +1,13 @@
-name: env
-summary: Provides a Ruby interface to common environment variables
+name: env_ext
+summary: Adds additional methods to ENV
 description:
-  Provides a Ruby interface to common environment variables, used on
-  Windows, Linux, BSD and OSX.
+  env_ext adds additional methods to ENV for common environment variables,
+  used on Linux, BSD, OSX and Windows.
 
 license: MIT
 authors: Postmodern
 email: postmodern.mod3@gmail.com
-homepage: https://github.com/postmodern/env#readme
+homepage: https://github.com/postmodern/env_ext#readme
 has_yard: true
 
 development_dependencies:

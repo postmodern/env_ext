@@ -1,14 +1,14 @@
-# Env
+# env_ext
 
-* [Homepage](https://github.com/postmodern/env)
-* [Issues](https://github.com/postmodern/env/issues)
-* [Documentation](http://rubydoc.info/gems/env/frames)
+* [Homepage](https://github.com/postmodern/env_ext)
+* [Issues](https://github.com/postmodern/env_ext/issues)
+* [Documentation](http://rubydoc.info/gems/env_ext/frames)
 * [Email](mailto:postmodern.mod3 at gmail.com)
 
 ## Description
 
-{Env} provides a Ruby interface to common environment variables, used on
-Linux, BSD, OSX and Windows.
+env_ext adds additional methods to `ENV` for common environment variables,
+used on Linux, BSD, OSX and Windows.
 
 ## Features
 
@@ -28,57 +28,38 @@ Linux, BSD, OSX and Windows.
 
 ## Examples
 
-    require 'env'
-
-Transparently access environment variables as a Hash:
-
-    Env['DESKTOP_SESSION']
-    # => "gnome"
-
-Transparently access environment variables as Constants:
-
-    Env::DESKTOP_SESSION
-    # => "gnome"
-
-Transparently access environment variables with methods:
-
-    Env.desktop_session
-    # => "gnome"
+    require 'env_ext'
 
 Parse complex variables:
 
-    Env.home
+    ENV.home
     # => #<Pathname:/home/alice>
 
-    Env.paths
+    ENV.paths
     # => [#<Pathname:/usr/local/bin>, #<Pathname:/usr/bin>, #<Pathname:/bin>, #<Pathname:/usr/local/sbin>, #<Pathname:/usr/sbin>, #<Pathname:/sbin>]
 
-    Env.lang
+    ENV.lang
     # => ["en_US", "utf8"]
 
-    Env.terminal
+    ENV.terminal
     # => "gnome-terminal"
 
-    Env.shell
+    ENV.shell
     # => "/bin/bash"
 
-    Env.editor
+    ENV.editor
     # => "vim"
 
-Only access the common variables from your Class:
+Extend your own `ENV` hash:
 
-    class Project
-
-      include Env::Variables
-
-    end
+    MyENV.extend EnvExt::Methods
 
 ## Install
 
-    $ gem install env
+    $ gem install env_ext
 
 ## Copyright
 
-Copyright (c) 2011-2012 Hal Brodigan
+Copyright (c) 2011-2020 Hal Brodigan
 
 See {file:LICENSE.txt} for details.
