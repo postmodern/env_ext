@@ -1,5 +1,7 @@
 # env_ext
 
+[![CI](https://github.com/postmodern/env_ext/actions/workflows/ruby.yml/badge.svg)](https://github.com/postmodern/env_ext/actions/workflows/ruby.yml)
+
 * [Homepage](https://github.com/postmodern/env_ext)
 * [Issues](https://github.com/postmodern/env_ext/issues)
 * [Documentation](http://rubydoc.info/gems/env_ext/frames)
