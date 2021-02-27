@@ -51,7 +51,24 @@ module EnvExt
     #   The path of the home directory.
     #
     def home
-      Pathname.new(Gem.user_home)
+      # logic adapted from Gem.find_home.
+      path = if (self['HOME'] || self['USERPROFILE'])
+               self['HOME'] || self['USERPROFILE']
+             elsif (self['HOMEDRIVE'] && self['HOMEPATH'])
+               "#{self['HOMEDRIVE']}#{self['HOMEPATH']}"
+             else
+               begin
+                 File.expand_path('~')
+               rescue
+                 if File::ALT_SEPARATOR
+                   'C:/'
+                 else
+                   '/'
+                 end
+               end
+             end
+
+      return Pathname.new(path)
     end
 
     #
